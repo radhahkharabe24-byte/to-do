@@ -1,0 +1,133 @@
+/* Shopping Domain Layout Architecture */
+.shopping-layout-split {
+    display: grid;
+    grid-template-columns: 1fr 1.8fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 850px) {
+    .shopping-layout-split {
+        grid-template-columns: 1fr;
+    }
+}
+
+.shopping-form-panel {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    align-self: start;
+}
+
+.shopping-form-panel h3 {
+    font-size: 1.15rem;
+    margin-bottom: 1.25rem;
+}
+
+.cost-summary-widget {
+    background-color: var(--bg-base);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    margin-top: 1.5rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.6rem;
+}
+
+.cost-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+.cost-val {
+    font-weight: 700;
+    color: var(--text-main);
+}
+
+.cost-row.total {
+    font-size: 1rem;
+    color: var(--text-main);
+    font-weight: 700;
+}
+
+/* Master Item Columns Section */
+.shopping-lists-display {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.shopping-bucket-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.shopping-bucket-card h3 {
+    font-size: 1.05rem;
+    margin-bottom: 1rem;
+    color: var(--text-main);
+}
+
+.shopping-item-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.65rem;
+}
+
+/* Ledger Item Node Card Graphic Layout */
+.shopping-ledger-node {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: var(--bg-base);
+    border-radius: var(--radius-md);
+    padding: 0.85rem 1rem;
+    transition: transform var(--transition-fast);
+}
+
+.shopping-ledger-node:hover {
+    transform: translateX(2px);
+}
+
+.shop-node-left {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+}
+
+.shop-node-info h4 {
+    font-size: 0.95rem;
+    font-weight: 600;
+}
+
+.shop-node-info p {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.shop-node-right {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.shop-node-price-tag {
+    font-weight: 700;
+    font-size: 0.95rem;
+}
+
+/* Completed Items Sub-section Custom Override Styling */
+.purchased-state-container .shopping-ledger-node {
+    opacity: 0.65;
+}
+.purchased-state-container .shop-node-info h4 {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}

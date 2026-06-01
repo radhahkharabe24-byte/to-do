@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rads Productivity Suite</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/dashboard.css">
+    <link rel="stylesheet" href="css/calendar.css">
+    <link rel="stylesheet" href="css/shopping.css">
+    <link rel="stylesheet" href="css/analytics.css">
+</head>
+<body>
+
+    <div class="app-container">
+        
+        <aside class="sidebar" id="sidebar">
+            <div class="sidebar-brand">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 22c5.523 0 10-4.477 10-10S17.523 2 12 2 2 6.477 2 12s4.477 10 10 10z"/><path d="m9 12 2 2 4-4"/></svg>
+                <span>Rads</span>
+            </div>
+            <nav class="sidebar-menu">
+                <a href="#dashboard" class="menu-item active" data-target="dashboard-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg>
+                    <span>Dashboard</span>
+                </a>
+                <a href="#tasks" class="menu-item" data-target="tasks-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m3 17 2 2 4-4"/><path d="m3 7 2 2 4-4"/><path d="M13 6h8"/><path d="M13 12h8"/><path d="M13 18h8"/><path d="m3 12 2 2 4-4"/></svg>
+                    <span>Tasks</span>
+                </a>
+                <a href="#calendar" class="menu-item" data-target="calendar-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+                    <span>Calendar</span>
+                </a>
+                <a href="#shopping" class="menu-item" data-target="shopping-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
+                    <span>Shopping</span>
+                </a>
+                <a href="#analytics" class="menu-item" data-target="analytics-view">
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+                    <span>Analytics</span>
+                </a>
+            </nav>
+            
+            <div class="sidebar-footer-profile">
+                <div class="profile-info">
+                    <div class="badge-avatar" id="profile-level-badge">Lv. 1</div>
+                    <div>
+                        <div class="profile-name">Productive User</div>
+                        <div class="profile-xp-text" id="profile-xp-display">0 / 100 XP</div>
+                    </div>
+                </div>
+                <div class="progress-bar-container mini">
+                    <div class="progress-bar-fill" id="profile-xp-bar" style="width: 0%"></div>
+                </div>
+            </div>
+        </aside>
+
+        <div class="main-content">
+            
+            <header class="main-header">
+                <div class="header-left">
+                    <button id="sidebar-toggle" class="icon-btn mobile-only">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+                    </button>
+                    <div class="header-datetime">
+                        <span id="header-date">Monday, January 1</span>
+                        <span id="header-time">00:00:00 AM</span>
+                    </div>
+                </div>
+                
+                <div class="header-right">
+                    <button id="notif-permission-btn" class="btn btn-secondary btn-icon-only" title="Enable Notifications">
+                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                    </button>
+                    
+                    <button id="theme-toggle" class="btn btn-secondary btn-icon-only" title="Toggle Dark/Light Mode">
+                        <svg id="theme-icon-sun" class="hidden" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"/><line x1="12" y1="1" x2="12" y2="3"/><line x1="12" y1="21" x2="12" y2="23"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="1" y1="12" x2="3" y2="12"/><line x1="21" y1="12" x2="23" y2="12"/><line x1="4.22" y1="19.72" x2="5.64" y2="18.31"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+                        <svg id="theme-icon-moon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                    </button>
+                    
+                    <div class="streak-counter-badge" title="Daily Productivity Streak">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8.5 14.5A2.5 2.5 0 0 0 11 12c0-1.38-.5-2-1-3-1.072-2.143-.224-4.054 2-6 .5 2.5 2 4.9 4 6.5 2 1.6 3 3.5 3 5.5a7 7 0 1 1-14 0c0-1.153.433-2.294 1-3a2.5 2.5 0 0 0 2.5 2.5z"/></svg>
+                        <span id="streak-count">0</span> Days
+                    </div>
+                </div>
+            </header>
+
+            <main class="view-viewport">
+                
+                <section id="dashboard-view" class="view-panel active">
+                    <div class="view-header">
+                        <h1>Welcome Back, High Achiever!</h1>
+                        <p class="subtitle">Here is a quick snapshot of your personal dynamic workload efficiency metrics.</p>
+                    </div>
+                    
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Total Points</h3>
+                                <p class="stat-value" id="dash-total-points">0</p>
+                            </div>
+                            <div class="stat-icon p-color">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/><path d="m12 7 1 2.5 2.5 1-2.5 1-1 2.5-1-2.5-2.5-1 2.5-1z"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Daily Completion</h3>
+                                <p class="stat-value" id="dash-completion-rate">0%</p>
+                            </div>
+                            <div class="stat-icon s-color">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"/><polyline points="22 4 12 14.01 9 11.01"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Pending Tasks</h3>
+                                <p class="stat-value" id="dash-pending-count">0</p>
+                            </div>
+                            <div class="stat-icon w-color">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                            </div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h3>Level Engine</h3>
+                                <p class="stat-value" id="dash-user-level">Level 1</p>
+                            </div>
+                            <div class="stat-icon d-color">
+                                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="12 2 22 8.5 22 15.5 12 22 2 15.5 2 8.5"/></svg>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="dashboard-split-grid">
+                        <div class="split-card list-box">
+                            <div class="card-title-container">
+                                <h2>High Priority Focus List</h2>
+                                <a href="#tasks" class="text-link view-switch-shortcut" data-target="tasks-view">Manage All</a>
+                            </div>
+                            <div class="task-list-mini element-list" id="dash-high-priority-tasks">
+                                <p class="empty-state">No urgent structural tasks found. Relax or plan ahead!</p>
+                            </div>
+                        </div>
+                        
+                        <div class="split-card badges-box">
+                            <h2>Unlocked Achievements</h2>
+                            <div class="badges-flex-container" id="dash-achievements-container">
+                                </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="tasks-view" class="view-panel">
+                    <div class="view-header columns-flex">
+                        <div>
+                            <h1>Operational Task Command</h1>
+                            <p class="subtitle">Organize, structure, prioritize, and capture items seamlessly.</p>
+                        </div>
+                        <button class="btn btn-primary" id="open-task-modal-btn">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="21" y2="12"/></svg>
+                            Create New Task
+                        </button>
+                    </div>
+
+                    <div class="filter-toolbar">
+                        <div class="search-input-wrapper">
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+                            <input type="text" id="task-search-input" placeholder="Search operational task definitions...">
+                        </div>
+                        <div class="select-dropdowns-group">
+                            <select id="task-filter-status">
+                                <option value="all">All Task Statuses</option>
+                                <option value="pending">Pending Only</option>
+                                <option value="completed">Completed Only</option>
+                            </select>
+                            <select id="task-filter-priority">
+                                <option value="all">All Priorities</option>
+                                <option value="high">High Priority</option>
+                                <option value="medium">Medium Priority</option>
+                                <option value="low">Low Priority</option>
+                            </select>
+                            <select id="task-filter-category">
+                                <option value="all">All Categories</option>
+                                <option value="Work">Work</option>
+                                <option value="Personal">Personal</option>
+                                <option value="Health">Health</option>
+                                <option value="Finance">Finance</option>
+                                <option value="Education">Education</option>
+                            </select>
+                            <select id="task-sort-by">
+                                <option value="dueDate-asc">Due Date (Ascending)</option>
+                                <option value="dueDate-desc">Due Date (Descending)</option>
+                                <option value="priority-desc">Priority (High to Low)</option>
+                                <option value="title-asc">Alphabetical (A-Z)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="tasks-master-grid" id="tasks-render-grid">
+                        </div>
+                </section>
+
+                <section id="calendar-view" class="view-panel">
+                    <div class="view-header">
+                        <h1>Dynamic Master Scheduling Calendar</h1>
+                        <p class="subtitle">Map tasks directly across continuous monthly time horizons.</p>
+                    </div>
+
+                    <div class="calendar-layout-engine">
+                        <div class="calendar-main-card">
+                            <div class="calendar-navigation-header">
+                                <h2 id="calendar-month-year-display">January 2026</h2>
+                                <div class="calendar-btn-group">
+                                    <button class="btn btn-secondary btn-icon-only" id="calendar-prev-month-btn">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                                    </button>
+                                    <button class="btn btn-secondary btn-icon-only" id="calendar-next-month-btn">
+                                        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <div class="calendar-grid-header">
+                                <div>Sun</div><div>Mon</div><div>Tue</div><div>Wed</div><div>Thu</div><div>Fri</div><div>Sat</div>
+                            </div>
+                            <div class="calendar-days-surface" id="calendar-days-grid-target">
+                                </div>
+                        </div>
+
+                        <div class="calendar-side-schedule-panel">
+                            <h3 id="schedule-focused-date-label">Tasks for Today</h3>
+                            <div class="schedule-focused-list" id="schedule-focused-list-target">
+                                </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="shopping-view" class="view-panel">
+                    <div class="view-header">
+                        <h1>Procurement & Shopping Ledger</h1>
+                        <p class="subtitle">Track material acquisitions with real-time continuous automatic cost aggregation.</p>
+                    </div>
+
+                    <div class="shopping-layout-split">
+                        <div class="shopping-form-panel">
+                            <h3>Add Item Definition</h3>
+                            <form id="shopping-add-form" autocomplete="off">
+                                <div class="form-group">
+                                    <label for="shop-item-name">Item Name / Description *</label>
+                                    <input type="text" id="shop-item-name" required placeholder="e.g., UltraWide Display Unit">
+                                </div>
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="shop-item-qty">Quantity *</label>
+                                        <input type="number" id="shop-item-qty" min="1" value="1" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="shop-item-price">Unit Price ($) *</label>
+                                        <input type="number" id="shop-item-price" min="0.00" step="0.01" value="0.00" required>
+                                    </div>
+                                </div>
+                                <button type="submit" class="btn btn-primary fluid-btn">Insert Procurement Item</button>
+                            </form>
+                            
+                            <div class="cost-summary-widget">
+                                <div class="cost-row">
+                                    <span>Pending Expenditures:</span>
+                                    <span class="cost-val" id="cost-pending-aggregate">$0.00</span>
+                                </div>
+                                <div class="cost-row">
+                                    <span>Purchased Commitments:</span>
+                                    <span class="cost-val text-success" id="cost-purchased-aggregate">$0.00</span>
+                                </div>
+                                <hr class="divider">
+                                <div class="cost-row total">
+                                    <span>Gross Aggregate Value:</span>
+                                    <span class="cost-val" id="cost-gross-aggregate">$0.00</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="shopping-lists-display">
+                            <div class="shopping-bucket-card">
+                                <h3>Outstanding Acquisition Backlog</h3>
+                                <div class="shopping-item-list element-list" id="shop-pending-list-target">
+                                    </div>
+                            </div>
+                            <div class="shopping-bucket-card purchased-state-container">
+                                <h3>Fulfilled / Purchased Items</h3>
+                                <div class="shopping-item-list element-list" id="shop-purchased-list-target">
+                                    </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <section id="analytics-view" class="view-panel">
+                    <div class="view-header">
+                        <h1>Advanced Workload Performance Analytics</h1>
+                        <p class="subtitle">Granular efficiency computations derived directly from task management lifecycle parameters.</p>
+                    </div>
+
+                    <div class="analytics-macro-progress-card">
+                        <div class="macro-progress-meta">
+                            <div>
+                                <h2>Total Lifecycle Efficiency Rating</h2>
+                                <p class="subtitle">Ratio of tasks completed successfully relative to cumulative backlogs.</p>
+                            </div>
+                            <div class="macro-pct-value" id="analytics-completion-rate-hero">0%</div>
+                        </div>
+                        <div class="progress-bar-container macro">
+                            <div class="progress-bar-fill" id="analytics-completion-bar-hero" style="width: 0%"></div>
+                        </div>
+                    </div>
+
+                    <div class="analytics-metrics-grid">
+                        <div class="metric-block">
+                            <span class="m-label">Productivity Performance Score</span>
+                            <span class="m-val" id="an-metric-score">0</span>
+                        </div>
+                        <div class="metric-block">
+                            <span class="m-label">Tasks Finished Today</span>
+                            <span class="m-val" id="an-metric-today">0</span>
+                        </div>
+                        <div class="metric-block">
+                            <span class="m-label">Completed This Week</span>
+                            <span class="m-val" id="an-metric-week">0</span>
+                        </div>
+                        <div class="metric-block">
+                            <span class="m-label">Completed This Month</span>
+                            <span class="m-val" id="an-metric-month">0</span>
+                        </div>
+                        <div class="metric-block">
+                            <span class="m-label">Optimal Velocity Day</span>
+                            <span class="m-val" id="an-metric-peak-day">None</span>
+                        </div>
+                        <div class="metric-block">
+                            <span class="m-label">Net Pending Backlog Items</span>
+                            <span class="m-val" id="an-metric-pending">0</span>
+                        </div>
+                    </div>
+
+                    <div class="gamification-centerpiece-section">
+                        <h2>Gamified Status Recognition Desk</h2>
+                        <p class="subtitle">Complete higher tier operational challenges to accumulate experience points (XP) and secure dynamic operational credentials.</p>
+                        
+                        <div class="badge-showcase-matrix" id="analytics-badges-full-matrix">
+                            </div>
+                    </div>
+                </section>
+
+            </main>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="task-modal-overlay">
+        <div class="modal-surface">
+            <div class="modal-header">
+                <h2 id="task-modal-title">Create Operational Task Entry</h2>
+                <button class="icon-btn" id="close-task-modal-btn">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+            <form id="task-submission-form" autocomplete="off">
+                <input type="hidden" id="task-form-id-field">
+                
+                <div class="form-group">
+                    <label for="task-form-title">Task Title *</label>
+                    <input type="text" id="task-form-title" required placeholder="Define target milestone objective...">
+                </div>
+                
+                <div class="form-group">
+                    <label for="task-form-desc">Detailed Description</label>
+                    <textarea id="task-form-desc" rows="3" placeholder="Provide supplementary criteria or notes..."></textarea>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-form-category">Category Focus</label>
+                        <select id="task-form-category">
+                            <option value="Work">Work</option>
+                            <option value="Personal">Personal</option>
+                            <option value="Health">Health</option>
+                            <option value="Finance">Finance</option>
+                            <option value="Education">Education</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-form-priority">Severity Priority Tier</label>
+                        <select id="task-form-priority">
+                            <option value="low">Low Priority (5 XP)</option>
+                            <option value="medium">Medium Priority (8 XP)</option>
+                            <option value="high">High Priority (10 XP)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="task-form-date">Due Execution Date *</label>
+                        <input type="date" id="task-form-date" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="task-form-time">Notification Trigger Time</label>
+                        <input type="time" id="task-form-time">
+                    </div>
+                </div>
+
+                <div class="modal-actions-footer">
+                    <button type="button" class="btn btn-secondary" id="cancel-task-modal-btn">Dismiss</button>
+                    <button type="submit" class="btn btn-primary" id="save-task-modal-btn">Commit Architecture Record</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script src="js/storage.js"></script>
+    <script src="js/rewards.js"></script>
+    <script src="js/analytics.js"></script>
+    <script src="js/reminders.js"></script>
+    <script src="js/tasks.js"></script>
+    <script src="js/calendar.js"></script>
+    <script src="js/shopping.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>

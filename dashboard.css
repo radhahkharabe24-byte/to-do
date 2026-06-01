@@ -1,0 +1,307 @@
+/* Dashboard Specific Layout Styles */
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: var(--shadow-sm);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.stat-card:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+.stat-info h3 {
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-muted);
+    margin-bottom: 0.35rem;
+}
+
+.stat-value {
+    font-size: 1.75rem;
+    font-weight: 700;
+}
+
+.stat-icon {
+    padding: 0.75rem;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.stat-icon.p-color { background-color: rgba(79, 70, 229, 0.1); color: var(--primary); }
+.stat-icon.s-color { background-color: rgba(16, 185, 129, 0.1); color: var(--success); }
+.stat-icon.w-color { background-color: rgba(245, 158, 11, 0.1); color: var(--warning); }
+.stat-icon.d-color { background-color: rgba(239, 68, 68, 0.1); color: var(--danger); }
+
+/* Secondary Sectioning Setup */
+.dashboard-split-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1.2fr;
+    gap: 1.5rem;
+}
+
+@media (max-width: 900px) {
+    .dashboard-split-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.split-card {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.split-card h2 {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1.25rem;
+}
+
+.card-title-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.text-link {
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.text-link:hover {
+    text-decoration: underline;
+}
+
+/* Micro Mini List Configurations */
+.task-list-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+}
+
+.mini-task-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.75rem;
+    background-color: var(--bg-base);
+    border-radius: var(--radius-sm);
+    border-left: 4px solid var(--danger);
+}
+
+.mini-task-meta h4 {
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+.mini-task-meta span {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+}
+
+/* Badges Flex Grid Box */
+.badges-flex-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(75px, 1fr));
+    gap: 1rem;
+}
+
+.badge-lock-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.4rem;
+    opacity: 0.35;
+    filter: grayscale(1);
+    transition: all var(--transition-normal);
+}
+
+.badge-lock-node.unlocked {
+    opacity: 1;
+    filter: grayscale(0);
+}
+
+.badge-icon-frame {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    background-color: var(--bg-base);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: var(--shadow-sm);
+    border: 2px solid var(--border-color);
+}
+
+.badge-lock-node.unlocked .badge-icon-frame {
+    background: linear-gradient(135deg, #fef08a, #facc15);
+    border-color: var(--warning);
+}
+
+.badge-lock-node span {
+    font-size: 0.7rem;
+    font-weight: 600;
+    max-width: 80px;
+    word-wrap: break-word;
+}
+
+/* Task Canvas Card Layout Subsystems */
+.filter-toolbar {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.search-input-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    background-color: var(--bg-base);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    padding: 0.4rem 0.75rem;
+    flex-grow: 1;
+    max-width: 400px;
+}
+
+.search-input-wrapper input {
+    border: none;
+    padding: 0;
+    background: transparent;
+    width: 100%;
+}
+
+.select-dropdowns-group {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.select-dropdowns-group select {
+    padding: 0.4rem 0.75rem;
+    font-size: 0.85rem;
+}
+
+/* Complete Tasks Matrix Presentation Blueprint */
+.tasks-master-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1.25rem;
+}
+
+.task-card-node {
+    background-color: var(--bg-surface);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-md);
+    padding: 1.25rem;
+    box-shadow: var(--shadow-sm);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    border-left: 5px solid var(--text-muted);
+    transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.task-card-node:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md);
+}
+
+/* Card Severity Structural Indicators */
+.task-card-node.p-high { border-left-color: var(--danger); }
+.task-card-node.p-medium { border-left-color: var(--warning); }
+.task-card-node.p-low { border-left-color: var(--primary); }
+
+.task-card-node.status-completed {
+    opacity: 0.65;
+    border-left-color: var(--success);
+}
+.task-card-node.status-completed .task-node-title {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-node-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.task-node-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+}
+
+.category-tag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    padding: 0.2rem 0.5rem;
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-base);
+    color: var(--text-muted);
+}
+
+.task-node-body-desc {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 1rem;
+    line-height: 1.4;
+    word-break: break-word;
+}
+
+.task-node-meta-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.75rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    margin-top: auto;
+    padding-top: 0.75rem;
+    border-top: 1px solid var(--bg-base);
+}
+
+.task-node-meta-row .date-block {
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+.task-card-actions {
+    display: flex;
+    gap: 0.25rem;
+}
